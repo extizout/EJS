@@ -12,26 +12,40 @@ const app = express();
 const port = 3000;
 app.set('view engine', 'ejs');
 
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 app.use(express.static("public"));
 
-app.get("/" , (req,res)=>{
-  res.render("home",{Content: homeStartingContent});
+app.get("/", (req, res) => {
+  res.render("home", {
+    Content: homeStartingContent
+  });
 
 });
 
-app.get("/about" , (req,res)=>{
-  res.render("about",{Content: aboutContent});
+app.get("/about", (req, res) => {
+  res.render("about", {
+    Content: aboutContent
+  });
 
 });
 
-app.get("/contact" , (req,res)=>{
-  res.render("contact",{Content: contactContent});
+app.get("/contact", (req, res) => {
+  res.render("contact", {
+    Content: contactContent
+  });
 
 });
 
-app.get("/compose" , (req,res)=>{
+app.get("/compose", (req, res) => {
   res.render("compose");
+
+});
+
+app.post('/compose', (req) => {
+  console.log(req.body.title);
+  console.log(req.body.post);
 
 });
 
