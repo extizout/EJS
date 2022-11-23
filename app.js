@@ -22,7 +22,7 @@ app.get("/", (req, res) => {
 
   res.render("home", {
     content: homeStartingContent,
-      posts: posts
+    posts: posts
   });
 
 });
@@ -55,7 +55,21 @@ app.post('/compose', (req, res) => {
   res.redirect('/');
 });
 
-
+app.get('/posts/:title', (req, res) => {
+  const requestedTitle = req.params.title;
+  posts.forEach((post) => {
+    const storedTitle = post.title
+    if (requestedTitle === storedTitle) {
+      res.render("post", {post: post})
+    }else if (requestedTitle != storedTitle) {
+      console.log("Not Found!")
+      res.redirect("/");
+    }else{
+      console.log("Error!")
+      res.redirect("/");
+    }
+  });
+});
 
 
 
