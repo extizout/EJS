@@ -61,14 +61,10 @@ app.get('/posts/:title', (req, res) => {
   posts.forEach((post) => {
     const storedTitle = _.lowerCase(post.title);
     if (requestedTitle === storedTitle) {
-      res.render("post", {post: post})
-    }else if (requestedTitle != storedTitle) {
-      console.log("Not Found!")
-      res.redirect("/");
-    }else{
-      console.log("Error!")
-      res.redirect("/");
-    }
+      res.render("post", {
+        post: post
+      });
+    };
   });
 });
 

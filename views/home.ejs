@@ -2,9 +2,10 @@
 <h1>Home</h1>
 <p><%= content %></p>
 <% posts.forEach((post)=>{ %>
-<h2><%= post.title %></h2>
+<h1><%=post.title%></h1>
 <p>
-  <%= post.content%>
+  <%= post.content.slice(0,180) +" [...]" %>
+  <a href=  "posts/<%=post.title%>">Read More</a>
 </p>
-<% }) %>
+<% }); %>
 <%- include("partials/footer") %>
